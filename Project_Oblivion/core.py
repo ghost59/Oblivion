@@ -136,6 +136,7 @@ def atom_decay():
                 print(Fore.RED + word)
             if file_datatime > more_days_ago:
                 print(Style.DIM + word + Fore.BLACK)
+@app.command("Obi")
 def oblivion_tui(args):
     if __name__ == "__main__":
         app = Oblivion_UI()
