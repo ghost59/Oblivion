@@ -1,0 +1,153 @@
+QuitScreen {
+    align: center middle;
+}
+
+#dialog {
+    grid-size: 2;
+    grid-gutter: 1 2;
+    grid-rows: 1fr 3;
+    padding: 0 1;
+    width: 60;
+    height: 11;
+    border: round $background 80%;
+    background: $surface;
+}
+
+#question {
+    column-span: 2;
+    height: 1fr;
+    width: 1fr;
+    content-align: center middle;
+}
+
+Button {
+    width: auto;
+    height: auto;
+    border: round dodgerblue; 
+}
+
+Input{
+    width: auto;
+    border: round dodgerblue;
+    background: $panel;
+    height: auto; 
+}
+
+#app-grid{
+    layout: grid; 
+    grid-size: 2; 
+    grid-columns: 1fr; 
+    grid-rows: 1fr;
+}
+
+#atom_container > Static{
+    background: $boost; 
+    color: auto;
+    margin-bottom: 1; 
+    padding: 1; 
+}
+
+#atom_container{
+    width: 100%;
+    height: 100%;
+    row-span: 2; 
+    background: $panel;
+    border: round dodgerblue;
+}
+
+#top-right{
+    height: 100;
+    width: 100;
+    layout: horizontal;
+    background: $panel;
+    border:$secondary round;
+}
+
+
+
+#bottom-right{
+    height: 100%;
+    layout: grid;
+    grid-columns: 1fr; 
+    grid-rows: 1fr;
+    grid-gutter: 1; 
+    background: $panel; 
+    border: round $secondary;
+}
+
+Header{
+    height: 20%;
+    width: 100%;
+    border: round dodgerblue; 
+
+}
+
+#reads{
+    height: 30; 
+    width:70;
+    border: round greenyellow;
+    outline: round $accent;
+
+}
+
+#searchs{
+    height: 100%; 
+    width: 100%;
+    layout: grid; 
+    grid-size: 2; 
+    grid-columns: 1fr; 
+    grid-rows: 1fr;
+    border: tall greenyellow;
+    outline: round $accent;
+}
+#hor{
+    height: 50%;
+    width: 100%;
+    padding: 1;
+    border: round greenyellow;
+    background: $panel;
+}
+
+
+#hor > Static{
+    width: 100%; 
+    height: 100%; 
+    margin-right: 1; 
+    background: $boost;
+}
+
+#querys > Static{
+    background: $boost; 
+    color: auto;
+    margin-bottom: 1; 
+    padding: 1; 
+}
+
+#querys{
+    width: 100%;
+    height: 100%;
+    row-span: 2; 
+    background: $panel;
+    border: round dodgerblue;
+}
+
+
+
+#bottom-right:hover{
+    border: hsl(300, 100%, 85%);
+
+}
+
+
+
+#top-right:hover{
+    border: hsl(300, 100%, 85%);
+}
+
+#Atom_Enter{
+    width: 30;
+}
+
+#atom_container:hover{
+    border: hsl(300,100%,85%);
+}

@@ -136,10 +136,10 @@ def atom_decay():
                 print(Fore.RED + word)
             if file_datatime > more_days_ago:
                 print(Style.DIM + word + Fore.BLACK)
-def oblivion_tui(args):
-    if __name__ == "__main__":
-        app = Oblivion_UI()
-        app.run()
+@app.command("obi")
+def oblivion_tui():
+    app = Oblivion_UI()
+    app.run()
         
 def detect(args):
     db_path = initialize_vault()
