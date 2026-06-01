@@ -139,7 +139,7 @@ def atom_decay():
 
 
 @app.command("Obi")
-def oblivion_tui(args):
+def oblivion_tui():
     if __name__ == "__main__":
         app = Oblivion_UI()
         app.run()
