@@ -12,6 +12,7 @@ import sys
 import asyncio
 import os
 import threading
+import random
 
 def get_bundle_path(relative_path):
     """ Finds the internal path for PyInstaller assets """
@@ -136,9 +137,10 @@ class Oblivion_UI(App):
         self.push_screen(QuitScreen())
     def action_request_whisper(self) -> None:
         from core import whisper
+        ran = random
         whispers = whisper()
         container = self.query_one("#whisper",VerticalScroll)
-        new_entry = Static(f"{whisper}")
+        new_entry = Static(f"{whispers}")
         container.mount(new_entry)
     def action_request_search(self) -> None:
         self.push_screen(QueryScreen())
