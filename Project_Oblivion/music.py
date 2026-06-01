@@ -7,7 +7,7 @@ from textual import work
 import re
 
 import threading
-from Project_Oblivion.core import initialize_vault
+from core import initialize_vault
 
 
 class Loom():

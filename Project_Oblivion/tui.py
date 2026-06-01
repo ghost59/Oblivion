@@ -54,9 +54,9 @@ class QueryScreen(Screen):
     
                 
     def on_button_pressed(self, event: Button.Pressed) -> None:
-        from Project_Oblivion.core import search_atoms
+        from core import query
         if event.button.id == "search":
-            atoms_search = search_atoms(self.search.value)
+            atoms_search = query(self.search.value)
             contrainer = self.query_one("#querys",VerticalScroll)
             new_entry = Static(f"{atoms_search}")
             contrainer.mount(new_entry)
@@ -75,7 +75,7 @@ class MapView(Screen):
     @work(exclusive=True)
     async def on_mount(self) -> None:
 
-        from Project_Oblivion.music import load
+        from music import load
         control = load()
 
         coord = control.coords()
@@ -123,7 +123,7 @@ class Oblivion_UI(App):
         
         
     def on_button_pressed(self, event: Button.Pressed) -> None:
-       from Project_Oblivion.core import create_atom
+       from core import create_atom
        new_atom = create_atom(self.atom.value)
        if event.button.id == "Atom":
         if isinstance(new_atom, dict):
@@ -135,8 +135,8 @@ class Oblivion_UI(App):
     def action_request_quit(self) -> None:
         self.push_screen(QuitScreen())
     def action_request_whisper(self) -> None:
-        from Project_Oblivion.core import read_atom
-        whisper = read_atom(None)
+        from core import whisper
+        whispers = whisper()
         container = self.query_one("#whisper",VerticalScroll)
         new_entry = Static(f"{whisper}")
         container.mount(new_entry)

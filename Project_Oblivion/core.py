@@ -33,7 +33,7 @@ def initialize_vault():
             f.write("# Oblivion - The LAW of Thought \n\n")
     return full_path
 @app.command("add")
-def creat_atom(content: str):
+def create_atom(content: str):
     signal = content
     if len(signal) > CHAR_LIMIT:
         print("To many characters, destill your thoughts")
