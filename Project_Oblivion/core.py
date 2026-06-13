@@ -9,6 +9,7 @@ import sys
 import typer 
 from rich.console import Console
 from rich.panel import Panel
+
 app = typer.Typer()
 console = Console()
 
@@ -97,7 +98,7 @@ def query(query: str):
     with open(db_path, "r", encoding="utf-8") as f:
         for line in f:
             if re.search(terms, line, re.IGNORECASE):
-                print(line.strip())
+                console.print( f"[bold cyan][italic]. {line.strip()}[/]")
                 results.append(line.strip())
                 found_count += 1
 
@@ -111,7 +112,7 @@ def atom_count():
     with open(db_path, 'r', encoding="utf-8") as f: 
         for line in f:
             count += 1
-    print(f"Atoms:{count}")
+    console.print(f"[bold cyan]Atoms:{count}[/]")
 @app.command("decay")
 def atom_decay():
     '''
