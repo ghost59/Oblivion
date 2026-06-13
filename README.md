@@ -3,6 +3,7 @@ Oblivion is a tool for capturing quick ideas.
 Oblivion is a cli and a tui for capturing quick ideas.
 
 delete the Oblivion folder when use python Oblivion.py init to start from scratch. 
+Run Python Oblivion.py [Enter a command]  [Enter any required text for add or query]
 
 Oblivion commands:
 add: Adds a thought to your Markdown file. 
