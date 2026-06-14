@@ -6,7 +6,12 @@ delete the Oblivion folder when use python Oblivion.py init to start from scratc
 Run Python Oblivion.py [Enter a command]  [Enter any required text for add or query]
 
 Oblivion commands:
-add: Adds a thought to your Markdown file. 
+
+add: Adds a thought to your Markdown file.
+
 Whisper: it reads an random atom. 
+
 Query: Allows you to search through the file for atoms.
+
 Obi: Opens the tui. 
+
