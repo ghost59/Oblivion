@@ -41,10 +41,4 @@ python Oblivion.py [command] [arguments]
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you want to help improve the CLI or TUI interfaces.
 ------------------------------
-If you want to take this README even further, tell me:
-
-* What Python library are you using for the TUI (e.g., Textual, Curses, or Blessings)?
-* What is the exact filename of the Markdown file where thoughts are saved?
-
-I can update the documentation to include those specific technical details and installation requirements!
 
