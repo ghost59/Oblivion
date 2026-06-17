@@ -1,17 +1,50 @@
-# Oblivion-
-Oblivion is a tool for capturing quick ideas.
-Oblivion is a cli and a tui for capturing quick ideas.
 
-delete the Oblivion folder when use python Oblivion.py init to start from scratch. 
-Run Python Oblivion.py [Enter a command]  [Enter any required text for add or query]
+------------------------------
+## Oblivion
+A lightweight CLI (Command Line Interface) and TUI (Text User Interface) designed for capturing your quick ideas and thoughts instantly. Oblivion stores your notes as decentralized "atoms" directly inside a local Markdown file, keeping your brainstorming frictionless and future-proof.
+------------------------------
+## 🚀 Quick Start
+Get your environment set up and ready to capture thoughts in under a minute.
+## Prerequisites
 
-Oblivion commands:
+* Python 3.x installed on your system.
 
-add: Adds a thought to your Markdown file.
+## Initialization
+To start fresh or completely reset your local storage, initialize the project.
 
-Whisper: it reads an random atom. 
+⚠️ Warning: Running this command will delete your existing Oblivion data folder to start from scratch.
 
-Query: Allows you to search through the file for atoms.
+python Oblivion.py init
 
-Obi: Opens the tui. 
+## Core Usage Syntax
+
+python Oblivion.py [command] [arguments]
+
+------------------------------
+## 🛠️ Available Commands
+
+| Command | Description | Example Syntax |
+|---|---|---|
+| add | Saves a new thought directly into your Markdown file. | python Oblivion.py add "Fix the database bug tomorrow" |
+| whisper | Selects and reads back a completely random thought atom. | python Oblivion.py whisper |
+| query | Searches through your stored atoms for specific keywords. | python Oblivion.py query "database" |
+| obi | Launches the interactive Text User Interface (TUI). | python Oblivion.py obi |
+
+------------------------------
+## 🎨 Features
+
+* Dual Interface: Seamlessly switch between fast terminal commands and a visual TUI.
+* Plain Text Storage: All data is saved in standard Markdown for maximum portability.
+* Instant Recall: Use queries to find old notes or let a random "whisper" spark new inspiration.
+
+------------------------------
+## 🤝 Contributing
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you want to help improve the CLI or TUI interfaces.
+------------------------------
+If you want to take this README even further, tell me:
+
+* What Python library are you using for the TUI (e.g., Textual, Curses, or Blessings)?
+* What is the exact filename of the Markdown file where thoughts are saved?
+
+I can update the documentation to include those specific technical details and installation requirements!
 
