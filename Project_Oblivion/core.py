@@ -10,6 +10,7 @@ import typer
 from rich.console import Console
 from rich.panel import Panel
 
+
 app = typer.Typer()
 console = Console()
 
@@ -33,27 +34,38 @@ def initialize_vault():
         with open(full_path, 'w') as f:
             f.write("# Oblivion - The LAW of Thought \n\n")
     return full_path
-@app.command("add")
-def create_atom(content: str):
+def create_atoms(content:str):
     signal = content
     if len(signal) > CHAR_LIMIT:
-        print("To many characters, destill your thoughts")
         return f"To many characters, destill your thoughts"
-    if len(signal) < MIN_LIMIT: 
-        print(f"Enter the minimum of 10" )
+    if len(signal) < MIN_LIMIT:
         return f"Enter the minimum of 10" 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    if len(signal) == 0:
-        return "Enter an Atom"
+    
     db_path = initialize_vault()
     try: 
         with open(db_path, 'a', encoding="utf-8") as f:
             entry = f"{timestamp} | {signal} \n"
             f.write(entry)
-        console.print(Panel(f"[bold cyan]Atom secure[/][italic]. ({len(signal)} chars)[/]"))
         return {"timestamp": timestamp,"Content": signal,}
     except Exception as e:
         print(f"Critical Failure: {e}")
+
+
+@app.command("add")
+def create_atom(content: str = typer.Argument(None)):
+    if content is None or len(content.strip()) == 0:
+        content = typer.prompt("Enter content here")
+    signal = content
+    if len(signal) > CHAR_LIMIT:
+        console.print("[bold cyan]To many characters, destill your thoughts[/]")
+        return f"To many characters, destill your thoughts"
+    if len(signal) < MIN_LIMIT: 
+        console.print(f"[bold red]Enter the minimum of 10[/]" )
+        return f"Enter the minimum of 10" 
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    atom = create_atoms(signal)
+    console.print(f"[bold cyan]{atom}")
      
 @app.command("whisper")
 def whisper():
@@ -78,19 +90,18 @@ def whisper():
         except Exception as e:
             print(f"Critical Failure: {e}")
             return None
-@app.command("query")
-def query(query: str):
+def query(query_input: str) -> list[str]:
     """
     Docstring for search_atoms
     
     :param query_terms: Scans the vault for lines containing ALL query terms (order agnostic).
     """
     if hasattr(query, 'query'):
-        query_terms = query
+        query_terms = query_input
     elif isinstance(query, str):
-        query_terms = query.split()
+        query_terms = query_input.split()
     else: 
-        query_terms = query
+        query_terms = query_input
     terms = "^" + "".join([f"(?=.*{re.escape(term)})" for term in query_terms])
     db_path = initialize_vault()
     found_count = 0 
@@ -98,13 +109,31 @@ def query(query: str):
     with open(db_path, "r", encoding="utf-8") as f:
         for line in f:
             if re.search(terms, line, re.IGNORECASE):
-                console.print( f"[bold cyan][italic]. {line.strip()}[/]")
                 results.append(line.strip())
-                found_count += 1
+                
+
+    return results
+@app.command("querys")
+def query_command(query_str: str = typer.Argument(None), interactive: bool = True):
+    """
+    Docstring for search_atoms
+    
+    :param query_terms: Scans the vault for lines containing ALL query terms (order agnostic).
+    """
+    if query_str is None or len(query_str.strip()) == 0 and interactive == True:
+        query_str = typer.prompt("Enter query here")
+    if not query_str or len(query_str.strip()) == 0:
+        console.print("[bold red] No query terms procided. [/]")
+        raise typer.Exit()
+    results = query(query_str)
 
     if not results:
-        return "No atoms found in the void"
-    return "\n".join(results)
+        console.print("[bold yellow] No atoms found in the void[/]")
+        return
+    for line in results: 
+        console.print(Panel(f"[bold cyan][italic. {line}[/]]", title="Query"))
+        
+
 @app.command("count")
 def atom_count():
     db_path = initialize_vault()

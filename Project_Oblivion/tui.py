@@ -13,6 +13,7 @@ import asyncio
 import os
 import threading
 import random
+from rich.panel import Panel
 
 def get_bundle_path(relative_path):
     """ Finds the internal path for PyInstaller assets """
@@ -45,7 +46,7 @@ class QueryScreen(Screen):
     CSS_PATH = get_bundle_path("styles/modal01.tcss")
     BINDINGS = [("b","request_back","back")]
     def compose(self) -> ComposeResult:
-        self.search = Input("Enter a Query", id="query")
+        self.search = Input(placeholder="Enter a Query", id="query")
         with Container(id="searchs"):
             yield VerticalScroll( id="querys")
             with Horizontal(id="hor"):
@@ -124,8 +125,8 @@ class Oblivion_UI(App):
         
         
     def on_button_pressed(self, event: Button.Pressed) -> None:
-       from core import create_atom
-       new_atom = create_atom(self.atom.value)
+       from core import create_atoms
+       new_atom = create_atoms(self.atom.value)
        if event.button.id == "Atom":
         if isinstance(new_atom, dict):
             container = self.query_one("#atom_container", VerticalScroll)
