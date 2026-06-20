@@ -142,30 +142,47 @@ def atom_count():
         for line in f:
             count += 1
     console.print(f"[bold cyan]Atoms:{count}[/]")
+def get_decayed_atoms() -> list[tuple[str, str]]:
+    formating_string = "%Y-%m-%d"
+    current = datetime.now()
+    thirty_days_ago = current - timedelta(days=30)
+    more_days_ago = current - timedelta(days=90)
+
+    db_path = initialize_vault()
+    results = []
+    with open(db_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            stripped_line = line.strip()
+            # 1. Skip comments or empty structural lines safely
+            if not stripped_line or stripped_line.startswith("#") or " | " not in stripped_line:
+                continue
+                
+            # 2. Safely unpack by our explicit delimiter
+            timestamp_part, content = stripped_line.split(" | ", 1)
+            
+            # Extract just the 'YYYY-MM-DD' sub-component
+            date_str = timestamp_part.split()[0] 
+            
+            try:
+                file_datetime = datetime.strptime(date_str, formating_string)
+            except ValueError:
+                continue # Skip corrupted or malformed date inputs
+                
+            # 3. Use an inverted chronological if/elif chain
+            if file_datetime < more_days_ago:
+                results.append(("DEAD", stripped_line))
+            elif file_datetime < thirty_days_ago:
+                results.append(("DECAYING", stripped_line))
+                
+    return results
+
 @app.command("decay")
 def atom_decay():
     '''
        This caluclates the rate of decay. 30 days will get a light red, more a black.  
     '''
-    formating_string = "%Y-%m-%d"
-    current = datetime.now()
-    thirty_days_ago = current - timedelta(days=30)
-    more_days_ago = current - timedelta(days=90)
-    db_path = initialize_vault()
-    with open(db_path, 'r', encoding='utf-8') as f:
-        for line in f:
-            word = line.strip()
-            time = word.split()
-            
-            
-            if not word:
-                continue
-            file_datatime = datetime.strptime(time[0], formating_string)
-            if file_datatime > thirty_days_ago:
-
-                print(Fore.RED + word)
-            if file_datatime > more_days_ago:
-                print(Style.DIM + word + Fore.BLACK)
+    dead = get_decayed_atoms()
+    console.print(Panel(f"[bold red]{dead}[/]", title="Decay Atoms"))
 
 
 @app.command("Obi")
