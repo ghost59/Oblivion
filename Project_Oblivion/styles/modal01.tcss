@@ -151,3 +151,7 @@ Header{
 #atom_container:hover{
     border: hsl(300,100%,85%);
 }
+
+#query {
+    width: 30;
+}
