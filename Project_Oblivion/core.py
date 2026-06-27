@@ -47,7 +47,7 @@ def create_atoms(content:str):
         with open(db_path, 'a', encoding="utf-8") as f:
             entry = f"{timestamp} | {signal} \n"
             f.write(entry)
-        return {"timestamp": timestamp,"Content": signal,}
+        return {"timestamp": timestamp,"Content": signal, "count": len(signal)} 
     except Exception as e:
         print(f"Critical Failure: {e}")
 
@@ -65,7 +65,7 @@ def create_atom(content: str = typer.Argument(None)):
         return f"Enter the minimum of 10" 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     atom = create_atoms(signal)
-    console.print(f"[bold cyan]{atom}")
+    console.print(f"[bold cyan] atom secured: {atom['count']}")
      
 @app.command("whisper")
 def whisper():
@@ -142,6 +142,7 @@ def atom_count():
         for line in f:
             count += 1
     console.print(f"[bold cyan]Atoms:{count}[/]")
+
 def get_decayed_atoms() -> list[tuple[str, str]]:
     formating_string = "%Y-%m-%d"
     current = datetime.now()

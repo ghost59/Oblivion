@@ -54,7 +54,7 @@ class Loom():
             neighbor_idx = indices[0][i]
             return f"Linked Connection: {self.clean_atoms[neighbor_idx]} (Distance: {distances[0][i]:.4f})"
 
-    # Test it with the "Mistakes" atom
+    
 
 
     def whisper_connection(self):
