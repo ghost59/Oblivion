@@ -1,6 +1,4 @@
 
-
-
 ------------------------------
 ## Oblivion
 A lightweight CLI (Command Line Interface) and TUI (Text User Interface) designed for capturing your quick ideas and thoughts instantly. Oblivion stores your notes as decentralized "atoms" directly inside a local Markdown file, keeping your brainstorming frictionless and future-proof.
@@ -43,4 +41,9 @@ python Oblivion.py [command] [arguments]
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you want to help improve the CLI or TUI interfaces.
 ------------------------------
+
+
+https://youtu.be/GX6gXFqfrY0
+
+
 
