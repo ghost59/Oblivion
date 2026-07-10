@@ -1,4 +1,6 @@
 
+
+
 ------------------------------
 ## Oblivion
 A lightweight CLI (Command Line Interface) and TUI (Text User Interface) designed for capturing your quick ideas and thoughts instantly. Oblivion stores your notes as decentralized "atoms" directly inside a local Markdown file, keeping your brainstorming frictionless and future-proof.
