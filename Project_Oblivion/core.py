@@ -9,7 +9,7 @@ import sys
 import typer 
 from rich.console import Console
 from rich.panel import Panel
-
+from typing import Annotated
 
 app = typer.Typer()
 console = Console()
@@ -34,6 +34,36 @@ def initialize_vault():
         with open(full_path, 'w') as f:
             f.write("# Oblivion - The LAW of Thought \n\n")
     return full_path
+def old_vault():
+    base = get_base_path()
+    folder_name = "oblivion"
+    file_name = "oblivion.md"
+    vault_dir = os.path.join(base, folder_name)
+    full_path = os.path.join(vault_dir,file_name)
+
+    return full_path
+
+@app.command("New")
+def New_vault(folder_name: str, file_name:str):
+    base = get_base_path()
+    vault_dir = os.path.join(base, folder_name)
+    full_path = os.path.join(vault_dir,file_name)
+    if not os.path.exists(full_path):
+        raise ValueError("path does not exist")
+    if os.path.exists(full_path):
+        with open(full_path, 'w') as f:
+            f.write("# Oblivion - The LAW of Thought \n\n")
+    return full_path
+
+
+
+@app.command("switch")
+def file_switch(old):
+    if old:
+        return old_vault()
+    else: 
+        return New_vault("","")
+
 def create_atoms(content:str):
     signal = content
     if len(signal) > CHAR_LIMIT:
@@ -186,15 +216,9 @@ def atom_decay():
     console.print(Panel(f"[bold red]{dead}[/]", title="Decay Atoms"))
 
 
-@app.command("Obi")
+@app.command("obi")
 def oblivion_tui():
     app = Oblivion_UI()
     app.run()
 
-        
-def detect(args):
-    db_path = initialize_vault()
-    with open(db_path, 'r', encoding='utf-8') as f:
-        for line in f: 
-            if line[1]  == "":
-                line.strip()
+
