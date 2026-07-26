@@ -34,14 +34,6 @@ def initialize_vault():
         with open(full_path, 'w') as f:
             f.write("# Oblivion - The LAW of Thought \n\n")
     return full_path
-def old_vault():
-    base = get_base_path()
-    folder_name = "oblivion"
-    file_name = "oblivion.md"
-    vault_dir = os.path.join(base, folder_name)
-    full_path = os.path.join(vault_dir,file_name)
-
-    return full_path
 
 @app.command("New")
 def New_vault(folder_name: str, file_name:str):
