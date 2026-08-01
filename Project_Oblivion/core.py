@@ -34,6 +34,14 @@ def initialize_vault():
         with open(full_path, 'w') as f:
             f.write("# Oblivion - The LAW of Thought \n\n")
     return full_path
+def old_vault():
+    base = get_base_path()
+    folder_name = "oblivion"
+    file_name = "oblivion.md"
+    vault_dir = os.path.join(base, folder_name)
+    full_path = os.path.join(vault_dir,file_name)
+
+    return full_path
 
 @app.command("New")
 def New_vault(folder_name: str, file_name:str):
@@ -57,6 +65,7 @@ def file_switch(old):
         return New_vault("","")
 
 def create_atoms(content:str):
+   
     signal = content
     if len(signal) > CHAR_LIMIT:
         return f"To many characters, destill your thoughts"
@@ -87,7 +96,9 @@ def create_atom(content: str = typer.Argument(None)):
         return f"Enter the minimum of 10" 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     atom = create_atoms(signal)
+    console.print(Panel("Append a new thought directly to your archive", title="Oblivion // CLI"))
     console.print(f"[bold cyan] atom secured: {atom['count']}")
+    
      
 @app.command("whisper")
 def whisper():

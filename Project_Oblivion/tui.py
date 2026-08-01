@@ -120,8 +120,6 @@ class Oblivion_UI(App):
         self.title = "Oblivion"
         self.sub_title = "The law of thought"
         
-        self.screen.styles.border = ("heavy", "white")
-        
         
         
     def on_button_pressed(self, event: Button.Pressed) -> None:

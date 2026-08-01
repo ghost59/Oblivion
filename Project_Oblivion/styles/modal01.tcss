@@ -1,4 +1,9 @@
-QuitScreen {
+Screen{
+    
+    border: round;
+}
+
+#QuitScreen {
     align: center middle;
 }
 
@@ -9,8 +14,8 @@ QuitScreen {
     padding: 0 1;
     width: 60;
     height: 11;
-    border: round $background 80%;
-    background: $surface;
+  
+   
 }
 
 #question {
@@ -29,7 +34,6 @@ Button {
 Input{
     width: auto;
     border: round dodgerblue;
-    background: $panel;
     height: auto; 
 }
 
@@ -38,10 +42,12 @@ Input{
     grid-size: 2; 
     grid-columns: 1fr; 
     grid-rows: 1fr;
+    background: #7D56F4;
+    color: #180a41;
 }
 
 #atom_container > Static{
-    background: $boost; 
+    
     color: auto;
     margin-bottom: 1; 
     padding: 1; 
@@ -51,7 +57,7 @@ Input{
     width: 100%;
     height: 100%;
     row-span: 2; 
-    background: $panel;
+    
     border: round dodgerblue;
 }
 
@@ -59,7 +65,7 @@ Input{
     height: 100;
     width: 100;
     layout: horizontal;
-    background: $panel;
+    
     border:$secondary round;
 }
 
@@ -71,14 +77,15 @@ Input{
     grid-columns: 1fr; 
     grid-rows: 1fr;
     grid-gutter: 1; 
-    background: $panel; 
+   
     border: round $secondary;
 }
 
 Header{
     height: 20%;
     width: 100%;
-    border: round dodgerblue; 
+    border: round dodgerblue;
+    background: #7D56F4;
 
 }
 
@@ -97,27 +104,30 @@ Header{
     grid-size: 2; 
     grid-columns: 1fr; 
     grid-rows: 1fr;
-    border: tall greenyellow;
-    outline: round $accent;
+    
+    
 }
 #hor{
     height: 50%;
     width: 100%;
     padding: 1;
-    border: round greenyellow;
-    background: $panel;
+    border: round #7D56F4;
+    
 }
 
+#whispers{
+    color: #230e63;
+}
 
 #hor > Static{
     width: 100%; 
     height: 100%; 
     margin-right: 1; 
-    background: $boost;
+    
 }
 
 #querys > Static{
-    background: $boost; 
+   
     color: auto;
     margin-bottom: 1; 
     padding: 1; 
@@ -127,14 +137,15 @@ Header{
     width: 100%;
     height: 100%;
     row-span: 2; 
-    background: $panel;
-    border: round dodgerblue;
+    border: round #7D56F4;
 }
 
-
+#Whisper{
+    color: #2d0b92;
+}
 
 #bottom-right:hover{
-    border: hsl(300, 100%, 85%);
+    border: #7D56F4;
 
 }
 
@@ -154,4 +165,8 @@ Header{
 
 #query {
     width: 30;
+}
+
+Footer {
+    background: #7D56F4;
 }
